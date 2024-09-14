@@ -1,1 +1,17 @@
-<h1>Task: {{object}} </h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Detail</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Task: {{ object.title }}</h1>
+        <p>{{ object.description }}</p>
+        <a href="{% url 'tasks' %}" class="link">Back to Tasks</a>
+    </div>
+</body>
+</html>

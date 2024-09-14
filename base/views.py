@@ -56,7 +56,17 @@ class TaskList(LoginRequiredMixin, ListView):
             
         context['search_input'] = search_input
         
+        # Filtrar por estado de la tarea
+        completed_filter = self.request.GET.get('completed')
+        if completed_filter == 'true':
+            context['tasks'] = context['tasks'].filter(complete=True)
+        elif completed_filter == 'false':
+            context['tasks'] = context['tasks'].filter(complete=False)
+        
+        context['completed_filter'] = completed_filter
+        
         return context
+
     
 class TaskDetail(LoginRequiredMixin, DetailView):
     model = Task
